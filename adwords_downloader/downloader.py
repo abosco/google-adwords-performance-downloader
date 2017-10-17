@@ -343,7 +343,8 @@ def _download_adwords_report(api_client: AdWordsApiClient,
                              report_type: str,
                              fields: [str],
                              predicates: {},
-                             current_date: datetime = None) -> []:
+                             current_date: datetime = None,
+                             date_range_type: str = 'TODAY') -> []:
     """Downloads an AdWords report from the Google AdWords API
 
     Args:
@@ -355,6 +356,8 @@ def _download_adwords_report(api_client: AdWordsApiClient,
         predicates: The predicate to filter by
             https://developers.google.com/adwords/api/docs/reference/v201609/CampaignService.Predicate
         current_date: datetime (optional), if none is specified today's date is assumed
+        date_range_type: str (optional), if none is specified uses TODAY
+            https://developers.google.com/adwords/api/docs/guides/reporting#date_ranges
 
     Returns:
         A Google AdWords report as a string
@@ -378,7 +381,7 @@ def _download_adwords_report(api_client: AdWordsApiClient,
             'max': date_str
         }
     else:
-        report_filter['dateRangeType'] = 'TODAY'
+        report_filter['dateRangeType'] = date_range_type
 
     report_downloader = api_client.GetReportDownloader(version=API_VERSION)
 
