@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 
+*2017-10-17* 
+
+- Allow to specify an optional timerange for a download different from 'TODAY' (e.g. to have weekly or monthly downloads)
+
+
+
 ## 1.3.0 
 *2017-10-10* 
 
